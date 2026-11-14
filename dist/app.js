@@ -1,3 +1,4 @@
+import { initIntroVideo } from './intro-video.js';
 import { initLanguage } from './i18n.js';
 import { initStudio } from './studio.js';
 import { clamp, sculptProfile, shapeVertex } from './shape-math.mjs';
@@ -15,6 +16,7 @@ let shapeRevision=0,angularVelocity=0,pointerHit=null,rayPick=null;
 const sculpt=new Float32Array(40);
 const studioUI=initStudio({onOpen:openStudio,onClose:closeStudio,onChange:changeStudio,onReset:resetStudio});
 initLanguage();
+initIntroVideo({onOpen:()=>{frameActive=false;},onClose:()=>{frameActive=!document.hidden;}});
 const captions=['STONEWARE / CELADON GLAZE','RAW CLAY / DAMP & MINERAL','WET CLAY / ON THE WHEEL','THROWN CLAY / AN OPEN FORM','DRY CLAY / A MATTE SURFACE','FIRE / A LASTING CHANGE','STONEWARE / MOSS GLAZE'];
 function applyMotion(){if(reduced){studio.spin=false;studioUI.update({spin:false});angularVelocity=0;}document.body.classList.toggle('reduced-motion',reduced);motionButton.setAttribute('aria-pressed',String(reduced));motionButton.setAttribute('aria-label',reduced?'Enable motion':'Reduce motion');motionButton.title=reduced?'Enable motion':'Reduce motion';motionButton.firstElementChild.textContent=reduced?'▷':'Ⅱ';}
 applyMotion();motionButton.addEventListener('click',()=>{reduced=!reduced;applyMotion()});prefersReduced.addEventListener('change',e=>{reduced=e.matches;applyMotion()});
@@ -52,7 +54,7 @@ canvas.addEventListener('pointerup',release);canvas.addEventListener('pointercan
 canvas.addEventListener('wheel',e=>{if(!studio.open)return;e.preventDefault();zoom=clamp(zoom-e.deltaY*.001,.7,1.85);},{passive:false});
 canvas.addEventListener('dblclick',()=>{if(studio.open){zoom=zoom>1.1?1:1.55;detail=zoom>1.1;}});
 canvas.addEventListener('keydown',e=>{if(!studio.open)return;if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','0'].includes(e.key)){e.preventDefault();if(e.key==='ArrowLeft')rotation-=.2;if(e.key==='ArrowRight')rotation+=.2;if(e.key==='ArrowUp')tilt=clamp(tilt+.08,-.18,.5);if(e.key==='ArrowDown')tilt=clamp(tilt-.08,-.18,.5);if(e.key==='+'||e.key==='=')zoom=clamp(zoom+.1,.7,1.85);if(e.key==='-')zoom=clamp(zoom-.1,.7,1.85);if(e.key==='0')resetView();}});
-document.addEventListener('visibilitychange',()=>frameActive=!document.hidden);
+document.addEventListener('visibilitychange',()=>frameActive=!document.hidden&&!document.querySelector('#intro-video').open);
 
 async function init(){
 const THREE=await import('three');const {RoomEnvironment}=await import('./vendor/RoomEnvironment.js');

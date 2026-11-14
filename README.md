@@ -2,7 +2,9 @@
 
 An artistic, interactive 3D ceramics website following a piece of pottery from raw clay to a finished vessel.
 
-[Explore the live website](https://earth-form-ceramics.ethanng89.chatgpt.site)
+[Explore the live website](https://earth-form-ceramics.ethanng89.chatgpt.site) · [Watch the introduction video](https://earth-form-ceramics.ethanng89.chatgpt.site/media/earth-form-intro.mp4)
+
+The 2:35 introduction includes English narration generated locally with Kokoro and English captions. Use **Watch introduction** on the website to play it.
 
 ## Inspiration
 
