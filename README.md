@@ -10,6 +10,10 @@ The 2:35 introduction includes English narration generated locally with Kokoro a
 
 The idea for this project came from [Build 3D Websites with Kimi Code - Tutorial #4 by Kimi AI](https://www.youtube.com/watch?v=GZFoexLsMi8). The video inspired the clay-to-ceramic journey, custom 3D vessel, shifting glaze highlights, and editorial presentation. This repository contains a separately implemented website inspired by that concept.
 
+[![Screenshot from Build 3D Websites with Kimi Code - Tutorial #4](docs/images/youtube-inspiration.png)](https://www.youtube.com/watch?v=GZFoexLsMi8)
+
+*Screenshot from the Kimi AI tutorial that inspired this project. Click the image to watch on YouTube.*
+
 ## Experience
 
 - Follow the clay through centering, shaping, drying, firing, and the finished object.
